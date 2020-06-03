@@ -1,0 +1,150 @@
+<div class="content-wrapper">
+  <!-- Basic Carousel start -->
+  <section id="basic-carousel">
+
+    <div class="row">
+      <div class="col-sm-12 mt-2">
+        <div class="content-header">Hàng trong kho</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- LEFT -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+              <form class="form">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    <i class="ft-user"></i>Kho hàng sản phẩm</h4>
+
+                  <div class="row">
+                    <div class="col-md-12" *ngIf="chitietSp != null">
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="projectinput1">Mã sản phẩm: </label>
+                            <input type="text" id="projectinput2" class="form-control" value="{{ chitietSp.id }}" readonly>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="projectinput1">Tên sản phẩm: </label>
+                            <input type="text" id="projectinput2" class="form-control" value="{{ chitietSp.tenSanPham }}">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="projectinput1">Đơn giá: </label>
+                            <input type="text" id="projectinput2" class="form-control" value="{{ chitietSp.donGia | number }} VNĐ">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="projectinput1">Chiết khấu: </label>
+                            <input type="text" id="projectinput2" class="form-control" value="{{ chitietSp.chietKhau * 100 }}%">
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- LEFT -->
+
+      <!-- RIGHT -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+
+              <form class="form">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    <i class="ft-info"></i>
+                    Số lượng sản phẩm
+                  </h4>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label for="projectinput5">Chọn size</label>
+                      <select (change)="onChange($event.target.value)" id="size" name="interested" class="form-control">
+                        <option value="0" selected="">--Select--</option>
+                        <option value="{{s.id}}" *ngFor="let s of listSizeAll">{{s.tenKichThuoc}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label for="projectinput4" *ngIf="role == 'ROLE_ADMIN'">Số lượng</label>
+                      <input *ngIf="chk ? 'disabled' : ''" [(ngModel)]='soLuong' type="text" id="soluong" class="form-control" name="phone">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <button *ngIf="role == 'ROLE_ADMIN'" type="button" (click)="addSize()" class="btn btn-raised btn-danger mr-1">+</button>
+                    </div>
+                  </div>
+                </div>
+
+                <table id="table_sp" class="table table-responsive-md-md text-center">
+                  <thead>
+                    <tr>
+                      <th>STT</th>
+                      <th>Kích thước</th>
+                      <th>Số lượng</th>
+                      <th *ngIf="role == 'ROLE_ADMIN'">Chức năng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let size of listSizeOfProduct;let i = index">
+                      <td style="vertical-align: middle">{{ i + 1 }}</td>
+                      <td style="vertical-align: middle">{{ size.tenKichThuoc }}</td>
+                      <td style="vertical-align: middle">{{ size.soLuong }}</td>
+                      <td style="vertical-align: middle">
+                        <a *ngIf="role == 'ROLE_ADMIN'" class="danger p-0" data-original-title="" title="Xóa" id="confirm-cancel">
+                          <i (click)="delSize(size.kichThuocId)" class="ft-x font-medium-3 mr-2"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="form-actions right">
+                  <button type="button" class="btn btn-raised btn-raised btn-warning mr-1" routerLink="/index/sanpham">
+                    <i class="ft-corner-up-left"></i> Quay lại
+                  </button>
+                  <button *ngIf="role == 'ROLE_ADMIN'" (click)="saveHangTrongKho()" type="button" class="btn btn-raised btn-raised btn-primary">
+                    <i class="ft-save"></i> Lưu
+                  </button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT -->
+
+    </div>
+
+  </section>
+</div>

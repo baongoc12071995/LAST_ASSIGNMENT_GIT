@@ -1,0 +1,80 @@
+#note {
+  height: 52px;
+  border: none;
+  background-color: #f4f2f8;
+  border-radius: 0;
+  width: 100%;
+}
+
+button.btnCheckout {
+  color: #fff;
+  background: #28A745;
+  padding: 10px 20px;
+  margin-left: 15px;
+}
+
+em {
+  float: right;
+  color: #E05C65;
+  padding-left: 10px;
+}
+
+.error input,
+.error select,
+.error textarea {
+  background-color: #E3C35C;
+}
+
+ul.order-details-form li:last-child {
+  border-bottom: 0;
+}
+
+.order-details-confirmation {
+  background: #F4F2F8;
+  padding: 40px 5px;
+  border-radius: 15px;
+}
+.order-details-confirmation .order-details-form li{
+  padding: 15px 0;
+}
+span.title {
+  font-size: 15px;
+  color: #000;
+}
+
+.getAll {
+  background: #fff;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+
+.infoPro span {
+    color: #3A3A3A;
+    font-weight: 600;
+}
+
+.sum {
+    color: #28A745;
+    font-weight: 600;
+}
+.sum span{
+  font-size: 18px;
+}
+.mt-50{
+  margin-top: 40px;
+
+}
+
+.row li.infoPro {
+  padding: 15px 0;
+  margin: 0;
+  width: 100%;
+}
+.big-title{
+  width: 100%;
+}
+
+.price {
+  font-weight: 700;
+}

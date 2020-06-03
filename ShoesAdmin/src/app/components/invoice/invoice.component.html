@@ -1,0 +1,156 @@
+<div class="content-wrapper">
+  <!--Invoice template starts-->
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Chi Tiết Hóa Đơn</h4>
+    </div>
+  </div>
+  <section class="invoice-template">
+    <div class="card" *ngIf="_detailInvoice != null">
+      <div class="card-body p-3">
+        <div id="invoice-template" class="card-block">
+          <!-- Invoice Company Details -->
+          <div id="invoice-company-details" class="row">
+            <div class="col-6 text-left">
+              <img src="../assets/app-assets/img/logos/logo-big-black.png" alt="company logo" class="mb-2" width="70">
+              <ul class="px-0 list-unstyled">
+                <li class="text-bold-800">Công Ty TNHH 2 Thành Viên</li>
+                <li>4128 Lê Văn Sỹ,Phường 8,Quận Phú Nhuận,TP.HCM</li>
+              </ul>
+            </div>
+            <div class="col-6 text-right">
+              <h2>THÔNG TIN HÓA ĐƠN</h2>
+              <p>
+                <span class="text-muted">Mã Hóa Đơn:{{_detailInvoice.id}}</span>
+                <p>
+                  <!-- <p class="pb-3">Mã Hóa Đơn:</p> -->
+                  <ul class="px-0 list-unstyled">
+                    <li>Tổng Tiền Thanh Toán: </li>
+                    <li class="lead text-bold-800">{{_detailInvoice.tongTien | number}} đ</li>
+                  </ul>
+            </div>
+          </div>
+          <!-- Invoice Company Details -->
+          <!-- Invoice Customer Details -->
+          <div id="invoice-customer-details" class="row pt-2">
+            <div class="col-sm-12 text-left">
+              <!-- <p class="text-muted">Thông tin Khách hàng:</p> -->
+            </div>
+            <div class="col-6 text-left" *ngIf="_detailInvoice.khachHang != null">
+              <p>
+                <span class="text-muted">Tên Khách hàng :</span>{{_detailInvoice.khachHang.tenKhachHang}}</p>
+              <p>
+                <p>
+                  <span class="text-muted">Số điện thoại :</span>{{_detailInvoice.khachHang.soDienThoai}}</p>
+                <p>
+                  <p>
+                    <span class="text-muted">Địa chỉ :</span>{{_detailInvoice.khachHang.diaChi}}</p>
+                  <p>
+                    <p>
+                      <span class="text-muted">Email :</span>{{_detailInvoice.khachHang.email}}</p>
+                    <p>
+                      <div *ngIf="_detailInvoice.trangThai == 'Đang chờ'">
+                        <button type="button" (click)="sendMail(_detailInvoice.id)" class="btn btn-primary btn-raised my-1">
+                          <i class="ft-navigation"></i> Gửi mail
+                        </button>
+                      </div>
+
+            </div>
+            <div class="col-6 text-right">
+              <p>
+                <span class="text-muted" *ngIf="_detailInvoice.nhanVien.tenNhanVien != '-'">Tên Nhân Viên : {{_detailInvoice.nhanVien.tenNhanVien}}</span>
+              </p>
+              <p>
+                <span class="text-muted">Ngày :</span>{{_detailInvoice.ngay}}</p>
+              <span *ngIf="_detailInvoice.trangThai == 'Đang chờ'">
+                <p>
+                  <span class="text-muted">Trạng Thái :</span>
+                  <span>{{_detailInvoice.trangThai}}</span>
+                  <br>
+                  <button type="button" (click)="showModal(_detailInvoice.id)" class="btn btn-raised btn-primary">
+                    <!-- (click)="changeTrangThai(_detailInvoice.id)" -->
+                    <i class="ft-save"></i>
+                    Hoàn thành
+                  </button>
+                </p>
+              </span>
+
+              <span *ngIf="_detailInvoice.trangThai == 'Hoàn thành'">
+                <p>
+                  <span class="text-muted">Trạng Thái :</span>
+                  <span>{{_detailInvoice.trangThai}}</span>
+                </p>
+              </span>
+            </div>
+          </div>
+          <!--/ Invoice Customer Details -->
+          <!-- Invoice Items Details -->
+          <div id="invoice-items-details" class="pt-2">
+            <div class="row">
+              <div class="table-responsive col-sm-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <!-- <th>STT</th> -->
+                      <th>Tên sản phẩm</th>
+                      <th class="text-right">Chiết khấu</th>
+                      <th class="text-right">Số Lượng</th>
+                      <th class="text-right">Đơn giá</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngFor="let detail of _detailInvoice.chiTietHoaDon">
+                      <!-- <th scope="row">{{detail.sanPham.id}}</th> -->
+                      <td>
+                        {{detail.sanPham.tenSanPham}}
+                      </td>
+                      <td class="text-right">{{detail.sanPham.chietKhau}}</td>
+                      <td class="text-right">{{detail.soLuong}}</td>
+                      <td class="text-right">{{detail.sanPham.donGia}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Invoice Footer -->
+          <div id="invoice-footer">
+            <div class="row">
+              <div class="col-md-3 col-sm-12 text-center">
+                <button type="button" class="btn btn-primary btn-raised my-1" routerLink="/index/hoadon">
+                  <i class="ft-corner-up-left"></i> Quay lại</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Invoice template ends-->
+  <!-- Modal -->
+  <div class="modal-wrapper" (click)="removeModal()"></div>
+
+  <div class="modal1">
+    <div class="modal-header">
+      <label class="modal-title text-text-bold-600 title">Confirm</label>
+      <!-- <h3 class="modal-title">Confirm</h3> -->
+      <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">Are you sure you want to save?</div>
+    <div class="modal-footer">
+      <div class="col-md-12 text-center">
+        <button type="submit" (click)="changeTrangThai()" class="btn btn-raised btn-success but1">
+          <i class=""></i> OK
+        </button>
+        <button type="submit" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+          <i class=""></i> Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL -->
+</div>

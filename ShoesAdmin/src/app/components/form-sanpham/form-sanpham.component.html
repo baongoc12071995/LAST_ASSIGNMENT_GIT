@@ -1,0 +1,175 @@
+<div class="content-wrapper">
+  <!-- Basic Carousel start -->
+  <section id="basic-carousel">
+
+    <div class="row">
+      <div class="col-sm-12 mt-2">
+        <div class="content-header">Thêm sản phẩm mới</div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+              <form class="form" [formGroup]="chitietSanpham">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    <i class="ft-user"></i>
+                    Thông tin sản phẩm
+                  </h4>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="userinput1">Tên Sản Phẩm</label>
+                        <div *ngIf="chitietSanpham.controls.tenSanPham.invalid && (chitietSanpham.controls.tenSanPham.dirty || chitietSanpham.controls.tenSanPham.touched)">
+                          <em>Vui lòng nhập tên sản phẩm</em>
+                        </div>
+                        <input type="text" formControlName="tenSanPham" maxlength="40" value="" id="userinput1" class="form-control border-primary" name="name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="userinput2">Loại giày</label>
+                      <select formControlName="loaiGiay" id="issueinput5" name="priority" class="form-control" data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                        data-title="Priority">
+                        <option value="none">---Select---</option>
+                        <option *ngFor="let giay of listgiay" [value]="giay.id">
+                          {{giay.tenLoai}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="userinput3">Đơn giá</label>
+                      <div *ngIf="chitietSanpham.controls.donGia.invalid && (chitietSanpham.controls.donGia.dirty || chitietSanpham.controls.donGia.touched)">
+                        <em *ngIf="chitietSanpham.controls.donGia.errors.pattern">Đơn giá không hợp lệ</em>
+                      </div>
+                      <input type="text" formControlName="donGia" maxlength="7" value="" id="userinput3" class="form-control border-primary"
+                        name="username">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="userinput4">Chiết khấu</label>
+                      <div *ngIf="chitietSanpham.controls.chietKhau.invalid && (chitietSanpham.controls.chietKhau.dirty || chitietSanpham.controls.chietKhau.touched)">
+                        <em *ngIf="chitietSanpham.controls.chietKhau.errors.pattern">Chiết khấu chưa hợp lệ</em>
+                      </div>
+                      <input type="text" formControlName="chietKhau" maxlength="2" value="" id="userinput4" class="form-control border-primary"
+                        name="nickname">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="projectinput8">Chi tiết</label>
+                        <div *ngIf="chitietSanpham.controls.chiTiet.invalid && (chitietSanpham.controls.chiTiet.dirty || chitietSanpham.controls.chiTiet.touched)">
+                          <em *ngIf="chitietSanpham.controls.chiTiet.errors.pattern">Vui lòng nhập thông tin chi tiết sản phẩm</em>
+                        </div>
+                        <textarea formControlName="chiTiet" id="projectinput8" rows="5" class="form-control" name="comment" value=""></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-actions text-center">
+                        <button type="button" class="btn btn-raised btn-raised btn-warning" routerLink="/index/sanpham">
+                          <i class="ft-corner-up-left"></i> Quay lại
+                        </button>
+                        <button type="button" (click)="showModal()" [disabled]="chitietSanpham.invalid" class="btn btn-raised btn-raised btn-primary">
+                          <i class="ft-save"></i> Lưu
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+              <form class="form">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    <i class="ft-info"></i> Hình ảnh</h4>
+
+                  <div class="upload">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-animated"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- <div class="col-md-12 col-upload">
+                        <div *ngIf="currentUpload">
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                          </div>
+                          Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+                        </div>
+                        <label>
+                          <input type="file" (change)="detectFiles($event)" multiple>
+                        </label>
+                        <button class="btn btn-primary btnUpload" [disabled]="!selectedFiles" (click)="uploadMulti()">Upload</button>
+                        <button class="btn btn-primary" (click)="getListImg()">Download</button>
+                      </div> -->
+
+                      <div *ngIf="currentFileUpload" class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                          {{progress.percentage}}%</div>
+                      </div>
+
+                      <label class="btn btn-default">
+                        <input type="file" (change)="selectFile($event)">
+                      </label>
+
+                      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Modal Save -->
+  <div class="modal-wrapper" (click)="removeModal()"></div>
+
+  <div class="modal1">
+    <div class="modal-header">
+      <label class="modal-title text-text-bold-600 title">Confirm</label>
+      <!-- <h3 class="modal-title">Confirm</h3> -->
+      <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">Are you sure you want to save?</div>
+    <div class="modal-footer">
+      <div class="col-md-12 text-center">
+        <button type="submit" (click)="saveSanphamInsert()" class="btn btn-raised btn-success but1">
+          <i class=""></i> OK
+        </button>
+        <button type="button" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+          <i class=""></i> Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL -->
+</div>

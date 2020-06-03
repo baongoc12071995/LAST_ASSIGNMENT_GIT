@@ -1,0 +1,68 @@
+ul.d-flex.justify-content-between.ul-size {
+  display: flex;
+  flex-direction: row;
+}
+
+li.sizes {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+a.a-size {
+  padding: 0;
+}
+
+.widget.size .widget-desc a {
+  padding: 0;
+}
+
+li.sizes:nth-child(2n) {
+  position: relative;
+  top: -35px;
+  left: -20px;
+}
+
+.widget.size .widget-desc a:hover {
+  transition: 0.4s;
+}
+
+.widget.catagory.mb-50 {
+  border-bottom: 0;
+}
+
+h6.widget-title {
+  margin-bottom: 45px;
+}
+
+li.sizes {
+  border: 1px solid gray;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.single-recommended-desc h6 {
+  cursor: pointer;
+}
+
+li.select:hover a.btnSelect {
+  color: #ff084e;
+  font-weight: 700;
+}
+
+.menu-content li .sub-menu li a:before {
+  display: none;
+}
+
+.menu-content li a {
+  padding-left: 5px;
+}
+
+a.btnSelect.active {
+  color: #ff084e;
+  font-weight: 700;
+}

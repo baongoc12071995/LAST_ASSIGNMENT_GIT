@@ -1,0 +1,106 @@
+<mat-tab-group>
+
+  <mat-tab label="Thông tin tài khoản" class="mattab">
+    <div class="example-container">
+      <form [formGroup]="profileForm" (ngSubmit)="updateProfile(profileForm.value)">
+        <div class="email">
+          <label class="lblName">Email</label>
+          <mat-form-field>
+            <input [readonly]="true" formControlName="email" matInput value="{{newCustomer.email}}">
+          </mat-form-field>
+        </div>
+
+        <div class="name">
+          <label class="lblName">Họ tên</label>
+          <mat-form-field>
+            <input matInput formControlName="tenKhachHang" [readonly]="true" value="{{newCustomer.tenKhachHang}}">
+          </mat-form-field>
+        </div>
+
+        <div class="hotline">
+          <label class="lblName">Số điện thoại</label>
+          <mat-form-field>
+            <input matInput formControlName="soDienThoai" value="{{newCustomer.soDienThoai}}">
+          </mat-form-field>
+        </div>
+
+        <div class="address">
+          <label class="lblName">Địa chỉ</label>
+          <mat-form-field>
+            <input matInput formControlName="diaChi" value="{{newCustomer.diaChi}}">
+          </mat-form-field>
+        </div>
+
+        <div class="button-row">
+          <button mat-raised-button color="primary" [disabled]="profileForm.invalid" type="submit" class="btnLogin">Cập nhật</button>
+        </div>
+      </form>
+
+    </div>
+
+  </mat-tab>
+
+
+  <mat-tab label="Lịch sử thanh toán">
+    <div class="container null" *ngIf="_invoiceArray.length == 0">
+      <div class="row">
+        <div class="col-md-12 text-center">
+            <p class="trade">Không có lịch sử giao dịch</p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="container" *ngIf="_invoiceArray.length > 0">
+      <div class="row row-history">
+        <div class="col-md-4 text-center">
+          <p>Ngày</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <p>Tổng tiền</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <p>Xem hóa dơn</p>
+        </div>
+      </div>
+      <div class="row row-history" *ngFor="let invoice of _invoiceArray">
+        <div class="col-md-4 text-center">
+          <p>{{invoice.ngay}}</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <p>{{invoice.tongTien | number}} đ</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <a class="btn btn-success" (click)="showInvoice(invoice.chiTietHoaDon)">Chi tiết</a>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<div class="modal-wrapper"></div>
+
+<div class="modal-login">
+  <div class="modal-content">
+    <div class="row row-title">
+      <div class="col-sm-12 text-center col-title">
+        <span>Chi tiết hóa đơn</span>
+        <i class="fas fa-times icon-trash" (click)="removeModal()"></i>
+      </div>
+    </div>
+    <div class="row modal-row" *ngFor="let p of invoiceDetail">
+      <div class="col-sm-3 text-center">
+        <p>{{p.sanPham.tenSanPham}}</p>
+      </div>
+      <div class="col-sm-3 text-center">
+        <img class="img-product" src="{{p.sanPham.hinhSanPham[0].hinh}}" alt="">
+      </div>
+      <div class="col-sm-3 text-center">
+        <p>{{p.soLuong}}</p>
+      </div>
+      <div class="col-sm-3 text-center">
+        <p>{{p.thanhTien | number}} đ</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Show login-modal after (click)="getAllProductInCart()" -->

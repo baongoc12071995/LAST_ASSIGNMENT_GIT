@@ -1,0 +1,74 @@
+a.nav-link {
+  cursor: pointer;
+}
+
+a.nav-link:hover {
+  color: #ff084e;
+}
+
+a.ff,
+a.gg {
+  font-size: 14px;
+}
+
+p.name {
+  font-size: 11px;
+  font-weight: 700;
+  color: #000;
+  display: inline;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+p.name:hover {
+  color: #ff084e;
+}
+
+.row.login-row {
+  padding-top: 15px;
+  padding-right: 15px;
+}
+
+img.avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.row-avatar {
+  padding-top: 5px;
+}
+
+a.btn.btn-primary.ff,
+a.btn.gg {
+  color: #fff;
+}
+
+.cart:hover a#header-cart-btn {
+  color: #ff084e;
+}
+
+div.arrow {
+  float: right;
+  margin-top: -22px;
+}
+
+button#dropdownMenuButton {
+  padding: 0;
+  padding: 0 5px;
+  border: 0;
+}
+
+.dropdown-toggle::after {
+  margin: 0;
+}
+
+.dropdown-menu.show {
+  margin-top: 12px;
+  margin-left: -100px;
+  padding: 0;
+}
+.dropdown-menu a.dropdown-item {
+  font-size: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,21 @@
+h1.title {
+    font-size: 25px;
+    color: #ff084e;
+}
+p.account {
+    font-size: 16px;
+    color: blue;
+    font-weight: bold;
+    margin: 0;
+}
+
+.col-md-12.text-center.info {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.add, .acc, .hotline {
+    margin-bottom: 20px;
+}
+.map {
+    padding-bottom: 50px;
+}

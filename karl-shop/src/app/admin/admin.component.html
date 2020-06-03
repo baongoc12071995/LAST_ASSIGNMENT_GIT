@@ -1,0 +1,19 @@
+<div class="wrapper">
+
+    <div class="example-container">
+        <p>Go Administrator page</p>
+      <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Mật khẩu" [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+      <div class="button-row">
+        <button mat-raised-button color="primary" class="btnLogin" (click)="demo()">Đăng nhập</button>
+      </div>
+      <small>Quên mật khẩu ?</small>
+    </div>
+
+</div>

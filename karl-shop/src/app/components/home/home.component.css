@@ -1,0 +1,26 @@
+.row.karl-new-arrivals {
+    width: 100%;
+    margin-left: 0.5%;
+}
+
+.col-12.col-sm-6.col-md-4.single_gallery_item.women.wow.fadeInUpBig {
+    max-width: 32%;
+    margin: 0.5%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+footer.footer_area {
+    margin-top: 50px;
+}
+
+.product-img img {
+    height: 240px;
+}
+
+
+section .container {
+    margin-bottom: 50px;
+}
+
+

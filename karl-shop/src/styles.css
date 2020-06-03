@@ -1,0 +1,144 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.fa-google-plus-g {
+  color: #fff;
+}
+
+body.modal-open {
+  overflow: overlay;
+}
+
+button.btn {
+  font-size: 16px;
+  background: transparent;
+  font-weight: bold;
+  color: #3a3a3a;
+  text-transform: uppercase;
+}
+
+button.btn:focus {
+  box-shadow: none;
+}
+
+button.btn:hover {
+  color: #ff084e;
+}
+
+.product-description p {
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.product-description p:hover {
+  color: #000;
+  transition: 0.4s;
+}
+
+.quickview_pro_img {
+  border: none;
+}
+
+.quickview_pro_img img {
+  width: 289px;
+}
+
+a.add-to-cart-btn {
+  cursor: pointer;
+}
+
+.product-description p {
+  color: #ff084e;
+  font-weight: 600;
+}
+
+.product-description {
+    padding: 20px 0;
+    background: #ededed;
+}
+
+.product-description .product-price {
+  color: #000;
+  text-decoration: line-through;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+h4.product-sale {
+  color: #000;
+  font-weight: 600;
+}
+
+.product-description {
+  text-align: center;
+}
+
+.col-12.single_gallery_item {
+  box-sizing: border-box;
+  transition: 0.4s;
+  padding: 15px;
+}
+
+.col-12.single_gallery_item:hover {
+  box-shadow: 2px 1px 6px 2px #ccc;
+  transition: 0.4s;
+}
+
+.product-description p:focus {
+  outline: none;
+}
+.modal-body {
+  background: #cccccc29;
+}
+h4.title {
+  color: #fc084d;
+}
+
+.share_wf p {
+  color: red;
+  font-weight: 600;
+}
+
+body.modal-open {
+  padding-right: 0 !important;
+  overflow: auto !important;
+}
+.sale {
+  border: 1px solid #ab6a7d;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background: #ff4081;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  z-index: 3;
+  box-shadow: 2px 2px 8px 0px #b6a8a8;
+}
+
+.sale span {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.card-body {
+  background: #f2f2f2;
+  padding: 0;
+}
+.single_gallery_item {
+  margin: 0 auto 50px auto;
+}
+.card-deck .card {
+  margin: 0;
+}
+.product-description{
+  background:none;
+}
+.card{
+  border:0;
+}

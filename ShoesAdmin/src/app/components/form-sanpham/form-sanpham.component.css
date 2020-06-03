@@ -1,0 +1,147 @@
+.modal1, .modal2 {
+  width: 500px;
+  height: 210px;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -105px;
+  margin-left: -250px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 10;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  
+}
+
+.modal1.show, .modal-wrapper.show, .modal2.show{
+  display: block;
+  visibility: visible;
+  opacity: 2;
+  transition: 0.4s;
+}
+.modal-wrapper.show{
+  opacity: 0.6;
+  background-color: rgb(0,0,0); /* Fallback color */
+}
+html, body, .modal-wrapper{
+  width: 100%;
+  height: 100%;
+}
+.modal-wrapper{
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+}
+.modal-header {
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-body {
+border: 0;
+border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-footer {
+  border: 0;
+}
+.form-group {
+  width: 80%;
+  margin-left: 10%;
+}
+.but1 {
+  width: 100px;
+}
+label.title {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #000;
+  margin-left: 51px;
+}
+button.close:focus {
+  outline: 0;
+}
+a.info.p-0 {
+  font-size: 20px;
+}
+
+.card-body {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -moz-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  background-color: white;
+}
+
+.box {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #CCCFD5;
+  line-height: 40px;
+  margin: 0 5px;
+  color: #000;
+  border-radius: 2px;
+}
+
+.btnKho {
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+form .form-actions{
+  border-top: 0;
+}
+
+.upload {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #f5f7fa;
+  border-radius: 5px;
+}
+
+table#table_sp {
+  background: #404747;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.col-md-12.col-upload {
+  margin-top: 15px;
+}
+
+.card-body .px-3 {
+  padding: 0 !important;
+}
+
+.col-md-12.form-group {
+  width: 100%;
+  margin: 0;
+}
+
+input#userinput1 {
+  width: 100%;
+}
+
+.col-md-12 .form-group {
+  margin: 0;
+  width: 100%;
+}
+
+em {
+  color: red;
+  font-size: 14px;
+  font-style: italic;
+}

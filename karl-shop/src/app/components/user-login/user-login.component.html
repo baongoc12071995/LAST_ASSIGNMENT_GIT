@@ -1,0 +1,82 @@
+<mat-tab-group>
+
+    <mat-tab label="Đăng ký">
+        <form [formGroup]="regisForm" (ngSubmit)="saveNewCustomer(regisForm.value)" class="regis">
+            <div class="example-container">
+
+                <em *ngIf="email.invalid && (email.dirty || email.touched)">Email chưa đúng định dạng</em>
+                <mat-form-field *ngIf="newCustomer.email != null">
+                    <input matInput [readonly]="true" placeholder="Email" [formControl]="email" value="{{newCustomer.email}}">
+                </mat-form-field>
+
+                <mat-form-field *ngIf="newCustomer.email == null">
+                    <input matInput placeholder="Email" [formControl]="email" value="">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [readonly]="true" placeholder="Name" [formControl]="tenKhachHang" value="{{newCustomer.tenKhachHang}}">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Mobile Phone" [formControl]="soDienThoai" value="{{newCustomer.soDienThoai}}" required>
+                </mat-form-field>
+                <em *ngIf="soDienThoai.invalid && (soDienThoai.dirty || soDienThoai.touched)">Số điện thoại chưa đúng định dạng</em>
+
+                <mat-form-field>
+                    <input matInput placeholder="Adress" [formControl]="diaChi" value="{{newCustomer.diaChi}}" required>
+                </mat-form-field>
+
+
+                <section class="example-section">
+                    <div class="button-row">
+                        <button mat-raised-button [disabled]="regisForm.invalid" color="primary" type="submit" class="btnLogin">Đăng ký</button>
+                    </div>
+                    <!-- <small (click)="showModal()">Đã có tài khoản</small> -->
+                </section>
+
+            </div>
+
+        </form>
+
+    </mat-tab>
+
+    <mat-tab label="Đăng nhập">
+        <div class="example-container">
+
+            <div class="button-row">
+                <button mat-raised-button color="primary" (click)="signInWithFB()">Đăng nhập Facebook
+          <i class="fab fa-facebook-f"></i>
+        </button>
+                <button mat-raised-button color="warn" (click)="signInWithGoogle()">Đăng nhập Google
+          <i class="fab fa-google"></i>
+        </button>
+
+            </div>
+        </div>
+    </mat-tab>
+
+</mat-tab-group>
+<!-- Show login-modal after (click)="getAllProductInCart()" -->
+<!-- <div class="modal-wrapper"></div> -->
+<!-- 
+<div class="modal-login">
+  <div class="modal-content">
+    <div class="row row-title">
+      <div class="col-sm-12 text-center col-title">
+        <span>Đăng nhập</span>
+        <i class="fas fa-times icon-trash" (click)="removeModal()"></i>
+      </div>
+    </div>
+    <div class="row modal-row">
+      <div class="col-sm-12 text-center">
+        <a class="btn btn-primary ff" (click)="signInWithFB()">Đăng nhập
+          <i class="fab fa-facebook-f icon"></i>
+        </a>
+        <a class="btn btn-danger gg" (click)="signInWithGoogle()">Đăng nhập
+          <i class="fab fa-google icon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Show login-modal after (click)="getAllProductInCart()" -->

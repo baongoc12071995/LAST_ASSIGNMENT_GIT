@@ -1,0 +1,194 @@
+<!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area Start <<<<<<<<<<<<<<<<<<<< -->
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/home">Trang Chủ</a>
+                    </li>
+                    <li *ngIf="_detailProduct != null" class="breadcrumb-item active">{{_detailProduct.tenSanPham}}</li>
+                </ol>
+                <!-- <a class="backToHome d-block">
+          <i class="fa fa-angle-double-left"></i> Quay lại</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area End <<<<<<<<<<<<<<<<<<<< -->
+
+<!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+                <div class="single_product_thumb">
+                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+
+                        <ol class="carousel-indicators">
+                            <li style="display: inline-flex" *ngFor="let img of _hinhSanPham; let i = index" data-target="#product_details_slider" [attr.data-slide-to]="i" [ngClass]="i == 0 ? 'active' : ''">
+                                <img src="{{img}}">
+                            </li>
+                        </ol>
+
+                        <div class="carousel-inner" *ngIf="_detailProduct != null">
+                            <div *ngFor="let img of _hinhSanPham; let i = index" [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'">
+                                <a class="gallery_img">
+                                    <img class="d-block w-100" [src]="img" alt="First slide">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6" *ngIf="_detailProduct!=null">
+                <div class="single_product_desc">
+
+                    <h4 class="title">
+                        <a href="#">{{_detailProduct.tenSanPham}}</a>
+                    </h4>
+
+                    <h4 class="product-sale">{{_detailProduct.donGia * (1-_detailProduct.chietKhau) | number:'1.0'}} đ</h4>
+                    <p class="available">Trạng Thái:
+                        <span class="text-muted">Còn hàng</span>
+                    </p>
+
+                    <div class="single_product_ratings mb-15">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="widget size mb-50">
+                        <h6 class="widget-title">Kích cỡ</h6>
+                        <div class="widget-desc">
+                            <ul>
+                                <li id="ss{{size.kichThuoc.tenKichThuoc}}" (click)="selectActive(size.kichThuoc.tenKichThuoc)" class="sizes" *ngFor="let size of _detailProduct.hangTrongKho">
+                                    <a (click)="selectSize(size.kichThuoc)">{{size.kichThuoc.tenKichThuoc}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget size mb-50 form-group">
+                        <h6 class="widget-title">Số lượng</h6>
+                        <div class="widget-desc">
+                            <select class="form-control" id="quantitySelection" [(ngModel)]="optionQuantitySelected">
+                                <option *ngFor="let optionQuantity of quantitySelections" class="active">{{ optionQuantity.quantity }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart Form -->
+                    <form class="cart clearfix mb-50 d-flex" method="post">
+                        <button (click)="addToCart()" id="addToCart" name="addtocart" value="5" class="btn cart-submit d-block" disabled>Thêm vào giỏ hàng</button>
+                        <button style="margin-left: 20px" (click)="goToCart()" id="goToCart" name="goToCart" class="btn cart-submit d-block">Xem giỏ hàng</button>
+                    </form>
+                    <div class="alert alert-warning" *ngIf="isShowWarningMessage">
+                        <p>{{ warningMessage }}</p>
+                    </div>
+                    <div class="alert alert-success" *ngIf="isShowSuccessMessage">
+                        <p>{{ successMessage }}</p>
+                    </div>
+
+                    <div id="accordion" role="tablist">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h6 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Thông tin chi tiết</a>
+                                </h6>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>{{_detailProduct.chiTiet}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingThree">
+                                <h6 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Vận chuyển &amp; Bảo hành</a>
+                                </h6>
+                            </div>
+                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Free ship trong phạm vi bán kính 10km</p>
+                                    <p>Free 3 lần dịch vụ chăm sóc, bảo dưỡng giày</p>
+                                    <p>Bảo hành 1 đổi 1 trong tháng đầu tiên sử dụng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area End >>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+<!-- ****** Quick View Modal Area Start ****** -->
+<div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            <div class="modal-body">
+                <div class="quickview_body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-lg-5">
+                                <div class="quickview_pro_img">
+                                    <img src="../assets/images/product-img/product-1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7">
+                                <div class="quickview_pro_des">
+                                    <h4 class="title">Boutique Silk Dress</h4>
+                                    <div class="top_seller_product_rating mb-15">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <h5 class="price">$120.99
+                                        <span>$130</span>
+                                    </h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
+                                    <a href="#">View Full Product Details</a>
+                                </div>
+
+                                <div class="share_wf mt-30">
+                                    <p>Share With Friend</p>
+                                    <div class="_icon">
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ****** Quick View Modal Area End ****** -->

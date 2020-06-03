@@ -1,0 +1,35 @@
+
+select#size {
+    width: 180px;
+}
+  input#soluong {
+    width: 180px;
+}
+.card .card-body {
+  padding : 0;
+}
+.btn.btn-raised.btn-danger.mr-1 {
+  margin-top: 65%;
+}
+form .form-actions{
+  border-top: 0;
+}
+.form-control {
+  display : block;
+  width: 60%;
+  padding : 0.375rem 0.75rem;
+  font-size : 1rem;
+  line-height : 1.5;
+  color : #495057;
+  background-color : #FFFFFF;
+  -webkit-background-clip : padding-box;
+  background-clip : padding-box;
+  border : 1px solid #CED4DA;
+  border-radius : 0.25rem;
+  -webkit-transition : border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition : border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition : border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -moz-transition : border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition : border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition : border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}

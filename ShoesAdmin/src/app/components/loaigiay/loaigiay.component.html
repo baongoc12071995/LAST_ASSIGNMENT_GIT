@@ -1,0 +1,109 @@
+<div class="content-wrapper">
+  <!--Extended Table starts-->
+  <div class="row">
+    <div class="col-12">
+      <div [innerHTML]="demo"></div>
+      <div class="content-header">THÔNG TIN LOẠI GIÀY</div>
+    </div>
+  </div>
+  <section id="extended">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+
+          <div class="card-body">
+            <div class="card-block">
+              <button id="addRow" class="btn btn-primary mb-2" (click)="showModalInsert()">
+                <i class="ft-plus-square"></i>&nbsp; Thêm mới</button>
+              <table id="table_giay" class="table table-striped table-bordered sourced-data dataTable" role="grid" aria-describedby="DataTables_Table_0_info">
+                <thead>
+                  <tr>
+                    <th>Mã Giày</th>
+                    <th>Tên Loại Giày</th>
+                    <th *ngIf="role == 'ROLE_ADMIN'">Chức năng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let giay of list_giay">
+                    <td style="vertical-align: middle">{{giay.id}}</td>
+                    <td style="vertical-align: middle">{{giay.tenLoai}}</td>
+                    <td style="vertical-align: middle" *ngIf="role == 'ROLE_ADMIN'" routerLinkActive="active">
+                      <a class="success p-0" data-original-title="" title="Cập nhật" data-toggle="modal" (click)="showModalUpdate(giay.id)">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- MODAL -->
+  <div class="modal-wrapper" (click)="removeModal()"></div>
+
+  <div class="modal1">
+    <div class="modal-header">
+      <label class="modal-title text-text-bold-600 title">Thông tin loại giày</label>
+      <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form method="post" [formGroup]="Loaigiay">
+      <div>
+        <div *ngIf="isInsert">
+          <label class="title">Mã giày</label>
+          <div class="form-group">
+            <input value="{{ChitietLoaigiay.id}}" type="text" class="form-control" readonly>
+          </div>
+        </div>
+        <label class="title">Loại giày </label>
+        <div class="form-group">
+          <div *ngIf="Loaigiay.controls.ten_Giay.invalid && (Loaigiay.controls.ten_Giay.dirty || Loaigiay.controls.ten_Giay.touched)">
+            <em *ngIf="Loaigiay.controls.ten_Giay.errors.pattern">
+              Tên loại giày chưa đúng định dạng
+            </em>
+          </div>
+          <input formControlName="ten_Giay" minlength="3" value="{{ChitietLoaigiay.tenLoai}}" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button type="submit" (click)="showModalSave()" [disabled]="Loaigiay.invalid" class="btn btn-raised btn-success but1">
+            <i class=""></i> Save
+          </button>
+          <button type="submit" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+            <i class=""></i> Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- MODAL -->
+  <!-- Modal Delete -->
+  <div class="modal-wrapper" (click)="removeModal()"></div>
+
+  <div class="modal2">
+    <div class="modal-header">
+      <label class="modal-title text-text-bold-600 title">Confirm</label>
+      <!-- <h3 class="modal-title">Confirm</h3> -->
+      <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">Are you sure you want to save?</div>
+    <div class="modal-footer">
+      <div class="col-md-12 text-center">
+        <button type="submit" (click)="saveLoaigiay()" class="btn btn-raised btn-success but1">
+          <i class=""></i> OK
+        </button>
+        <button type="submit" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+          <i class=""></i> Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL -->
+</div>

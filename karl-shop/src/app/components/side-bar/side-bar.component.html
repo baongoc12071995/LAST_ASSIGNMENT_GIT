@@ -1,0 +1,68 @@
+<div class="shop_grid_area section_padding_100">
+  <div class="container">
+    <!-- <div class="row">
+
+      <div class="shop_sidebar_area"> -->
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="widget catagory mb-50">
+              <div class="nav-side-menu">
+                <h6 class="mb-0">Danh mục</h6>
+                <div class="menu-list">
+                  
+                  <ul id="menu-content2" class="menu-content collapse out">
+                    <li class="">
+                      <ul class="sub-menu">
+                        <li (click)="goCate(name)" id="{{name}}" class="select" *ngFor="let name of _tenGiay">
+                            <a class="btnSelect">{{name}}</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="widget size mb-50">
+              <h6 class="widget-title mb-30">Lọc theo kích cỡ</h6>
+              <div class="widget-desc">
+                <ul class="d-flex justify-content-between ul-size">
+                  <li *ngFor="let size of _kichThuocArray" class="sizes" id="{{size.id}}">
+                    <a (click)="goSize(size.id)" class="a-size">{{ size.tenKichThuoc }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="widget recommended">
+              <h6 class="widget-title mb-30">Khuyến khích</h6>
+
+              <div class="widget-desc">
+
+                <div *ngFor="let product of _recommendArray" class="single-recommended-product d-flex mb-30">
+                  <div class="single-recommended-thumb mr-3">
+                    <img src="{{product.hinh}}" alt="">
+                  </div>
+                  <div class="single-recommended-desc">
+                    <h6 [routerLink]="['/home/detail/',product.id ]">{{product.tenSanPham}}</h6>
+                    <p>{{product.donGia | currency : 'VNĐ' : 'code' : '1.0'}}</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+  </div>
+</div>

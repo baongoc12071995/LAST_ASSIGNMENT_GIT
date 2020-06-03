@@ -1,0 +1,202 @@
+html,
+body,
+.modal-login,
+.modal-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+label.lblName {
+  width: 19%;
+}
+
+.example-container.ng-star-inserted {
+  box-sizing: border-box;
+  padding: 15px;
+  /* background: #E0E0E0; */
+  width: 50%;
+  margin: 30px 0;
+  margin-left: 25%;
+}
+
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
+mat-radio-group.example-radio-group.mat-radio-group.ng-valid.ng-touched.ng-dirty {
+  display: inline;
+}
+
+mat-radio-group.example-radio-group.mat-radio-group.ng-untouched.ng-pristine.ng-valid {
+  display: inline;
+}
+
+button.btnLogin.mat-raised-button.mat-primary {
+  padding: 0 50px;
+}
+
+.button-row {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.row.row-history {
+  padding: 0;
+  margin: 20px 0;
+}
+
+/* modal */
+
+.modal-login {
+  position: fixed;
+  width: 800px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -400px;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  transform: scale(0.5);
+}
+
+.modal-login.show {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.4;
+  transform: scale(1);
+}
+
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #918c8c5c;
+  z-index: 9998;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal-wrapper.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+i.icon-trash {
+  font-size: 16px;
+  color: #fff;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.row.modal-row-footer {
+  margin: 0;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+}
+
+.row.modal-row-footer div {
+  padding-bottom: 10px;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.row.modal-row-footer div:hover {
+  color: #ff084e;
+}
+
+.modal-content {
+  width: 800px;
+  height: 300px;
+  position: relative;
+  background: #f4f2f8;
+  border: 0;
+}
+
+.row.row-title {
+  margin: 0;
+  padding: 20px 0;
+  background: #ff084e;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.row.modal-row {
+  margin: 0;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 5px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.row.modal-row:nth-child(2n) {
+  background: #f4f2f8;
+}
+
+.col-sm-3.text-center p {
+  font-size: 16px;
+  color: #000;
+  font-weight: 300;
+}
+.img-product {
+  height: 80px;
+}
+/* modal */
+
+p.trade {
+  font-weight: 300;
+  font-size: 20px;
+  color: #ccc;
+  line-height: 460px;
+}
+
+.container.null {
+  height: 480px;
+}

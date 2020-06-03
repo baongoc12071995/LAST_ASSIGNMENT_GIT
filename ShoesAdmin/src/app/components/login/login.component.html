@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="container">
+    <form>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" name="username" class="form-control" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" id="inputEmail3" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" name="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" id="inputPassword3" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+          <button type="submit" class="btn btn-primary" (click)="signIn()">Sign in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+</div>

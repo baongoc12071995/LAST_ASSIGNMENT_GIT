@@ -1,0 +1,147 @@
+html, body, .modal-login, .modal-wrapper{
+  width: 100%;
+  height: 100%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container.ng-star-inserted {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 30px;
+  padding-bottom: 50px;
+}
+
+.button-row {
+  text-align: center;
+  margin: 20px 0;
+}
+
+button.mat-raised-button.btnLogin {
+  width: 100%;
+}
+
+small {
+  margin-top: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #9b9b9b;
+}
+
+small:hover {
+  color: #3f51b5;
+}
+
+section.example-section {
+  margin-top: 20px;
+}
+
+form.regis {
+  width: 60%;
+  margin-left: 20%;
+  padding: 20px 0;
+}
+.phone {
+  width: 100%;
+}
+
+.row.modal-row {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+}
+.row-title{
+  margin: 0;
+  background: #ff084e;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.modal-login {
+  position: fixed;
+  width: 500px;
+  height: 180px;
+  top: 50%;
+  left: 50%;
+  margin-top: -90px;
+  margin-left: -250px;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  transform: scale(0.5);
+}
+
+.modal-login.show {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.4;
+  transform: scale(1);
+}
+
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #918c8c5c;
+  z-index: 9998;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal-wrapper.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+i.icon-trash {
+  font-size: 16px;
+  color: #fff;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 30px;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+a.ff,
+a.gg {
+  background: #fff;
+  width: 150px;
+}
+
+a.ff:hover {
+  background-color: #0062cc;
+  color: #fff;
+}
+
+a.ff:hover i.icon {
+  color: #fff;
+}
+
+a.gg:hover i.icon {
+  color: #fff;
+}
+
+a.gg:hover {
+  background-color: #bd2130;
+  color: #fff;
+}
+.modal-content {
+  width: 500px;
+  height: 180px;
+  position: relative;
+  background: #f4f2f8;
+  border: 0;
+}
+em {
+  color: red;
+}

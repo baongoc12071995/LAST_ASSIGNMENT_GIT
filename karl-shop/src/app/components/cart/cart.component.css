@@ -1,0 +1,195 @@
+html, body, .modal-login, .modal-wrapper{
+    width: 100%;
+    height: 100%;
+}
+a.cart-submit {
+  cursor: pointer;
+}
+
+i.far.remove {
+  font-size: 18px;
+  color: #ff084e;
+}
+
+.removeProduct {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+.cart-table .table td,
+.cart-table .table th {
+  text-align: center;
+}
+
+.btnRemove {
+  position: relative;
+}
+
+span.quantityMax {
+  color: #ff084e;
+  font-weight: 700;
+}
+
+.cart-page-heading {
+  text-align: center;
+  background: #5f5757;
+  padding: 20px;
+  margin-bottom: 0;
+}
+
+.cart-page-heading h5 {
+  color: #fff;
+}
+
+a.karl-checkout-btn,
+a.continue:hover {
+  background: #009688;
+  color: #fff;
+}
+
+div.update-checkout.w-50.text-right a.destroy {
+  background: #ff084e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-content {
+  width: 500px;
+  height: 180px;
+  position: relative;
+  background: #f4f2f8;
+  border: 0;
+}
+
+a.ff,
+a.gg {
+  background: #fff;
+  width: 150px;
+}
+
+a.ff:hover {
+  background-color: #0062cc;
+  color: #fff;
+}
+
+a.ff:hover i.icon {
+  color: #fff;
+}
+
+a.gg:hover i.icon {
+  color: #fff;
+}
+
+a.gg:hover {
+  background-color: #bd2130;
+  color: #fff;
+}
+
+i.icon {
+  color: blue;
+}
+
+a.gg i.icon {
+  color: #bd2130;
+}
+
+.row.modal-row {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+}
+.row-title span {
+    font-size: 18px;
+}
+.row-title{
+    margin: 0;
+    background: #ff084e;
+    box-sizing: border-box;
+    padding: 15px;
+}
+.row-title span{
+    color: #fff;
+}
+
+
+.cart_area.section_padding_100.clearfix {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-login {
+    position: fixed;
+    width: 500px;
+    height: 180px;
+    top: 50%;
+    left: 50%;
+    margin-top: -90px;
+    margin-left: -250px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+    transform: scale(0.5);
+}
+.modal-login.show {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.4;
+  transform: scale(1);
+}
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #918c8c5c;
+  z-index: 9998;
+  visibility: hidden;
+  opacity: 0;
+}
+.modal-wrapper.show{
+  visibility: visible;
+  opacity: 1;
+}
+i.icon-trash {
+  font-size: 16px;
+  color: #fff;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.row.modal-row-footer {
+
+  margin: 0;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+
+}
+.row.modal-row-footer div {
+  padding-bottom: 10px;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+}
+.row.modal-row-footer div:hover {
+  color: #ff084e;
+}

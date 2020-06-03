@@ -1,0 +1,17 @@
+.chart-1, .chart-2, .chart-3, .chart-4 {
+    margin-top: 20px;
+    background: #fff;
+}
+.row.btnDrop {
+    margin:0;
+    box-sizing: border-box;
+    padding: 10px;
+}
+select.custom-select {
+    width: 120px;
+    margin-right: 5px;
+}
+
+a.btn.btn-outline-success {
+    width: 100px;
+}

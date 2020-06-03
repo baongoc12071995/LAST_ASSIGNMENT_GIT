@@ -1,0 +1,109 @@
+<!-- ****** Top Catagory Area Start ****** -->
+<section class="top_catagory_area d-md-flex clearfix">
+    <!-- Single Catagory -->
+    <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url('../assets/images/bg-img/home-of-classic.jpg');">
+        <div class="catagory-content">
+            <h2 style="color: black;">HOME OF CLASSIC</h2>
+            <a (click)="getProductByCate('Nike')" class="btn karl-btn">Mua ngay</a>
+        </div>
+    </div>
+    <!-- Single Catagory -->
+    <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url('../assets/images/bg-img/stan-smith-original.jpg');">
+        <div class="catagory-content">
+            <h2 style="color: black;">FEEL THE FUTURE</h2>
+            <a (click)="getProductByCate('Adidas')" class="btn karl-btn">Mua Ngay</a>
+        </div>
+    </div>
+</section>
+<!-- ****** Top Catagory Area End ****** -->
+
+<!-- ****** Quick View Modal Area Start ****** -->
+<div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+            <div class="modal-body" *ngIf="_detailArray!=null">
+                <div class="quickview_body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-lg-5">
+                                <div class="quickview_pro_img">
+                                    <img src="{{_detailArray.hinh}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7">
+                                <div class="quickview_pro_des">
+                                    <h4 class="title">{{_detailArray.tenSanPham}}</h4>
+                                    <h4 class="product-sale">{{_detailArray.donGia * (1-_detailArray.chietKhau) | number:'1.0'}} đ</h4>
+                                    <p>{{_detailArray.chiTiet}}</p>
+                                    <a [routerLink]="['/home/detail', _detailArray.id]">Xem chi tiết</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ****** Quick View Modal Area End ****** -->
+
+<!-- ****** New Arrivals Area Start ****** -->
+<section class="new_arrivals_area section_padding_100_0 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_heading text-center">
+                    <h2>Dòng sản phẩm mới</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="karl-projects-menu mb-100">
+        <div class="text-center portfolio-menu">
+            <span class="" *ngFor="let loaigiay of _loaiGiayArray">
+        <button class="btn" data-filter="" (click)="getProductByCate(loaigiay.tenLoai)">{{loaigiay.tenLoai}}</button>
+      </span>
+        </div>
+    </div>
+
+    <!-- All Products -->
+    <div class="container">
+        <div class="row karl-new-arrivals">
+            <div *ngFor="let pro of _productArray" class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
+
+                <div class="card">
+                    <div class="product-img" (click)="getDetailModal(pro)">
+                        <img src="{{pro.hinh}}" alt="">
+                        <div class="product-quicview">
+                            <a href="#" data-toggle="modal" data-target="#quickview">
+                                <i class="ti-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-description">
+                            <h5 class="product-price">{{pro.donGia | number:'1.0'}} đ</h5>
+                            <h4 class="product-sale">{{pro.donGia * (1-pro.chietKhau) | number:'1.0'}} đ</h4>
+                            <p [routerLink]="['/home/detail', pro.id]">{{pro.tenSanPham}}</p>
+                        </div>
+                    </div>
+                    <div class="sale">
+                        <span>-{{pro.chietKhau * 100 | number: '1.0'}}%</span>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- All Products -->
+
+    </div>
+</section>
+<!-- ****** New Arrivals Area End ****** -->

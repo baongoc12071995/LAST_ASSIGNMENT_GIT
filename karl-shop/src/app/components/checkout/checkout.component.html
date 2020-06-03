@@ -1,0 +1,99 @@
+<!-- ****** Checkout Area Start ****** -->
+<div class="checkout_area section_padding_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-50 clearfix">
+                    <div class="cart-page-heading">
+                        <h5>Thông tin hóa đơn</h5>
+                    </div>
+                    <form method="post" [formGroup]="checkoutForm" (ngSubmit)="payment(checkoutForm.value)">
+                        <div class="row">
+                            <div class="col-md-12 mb-3 form-group">
+                                <label for="first_name">Họ tên
+                                  <span>*</span>
+                                </label>
+                                <input formControlName="name" type="text" placeholder="Nhập họ tên của bạn" class="form-control" id="first_name" ngModel="{{customer.tenKhachHang}}" required>
+                            </div>
+                            <div class="col-12 mb-3 form-group">
+                                <label for="phone_number">Số điện thoại
+                                  <span>*</span>
+                                </label>
+                                <input formControlName="phoneNumber" placeholder="Nhập số điện thoại của bạn" class="form-control" id="phone_number" min="0" ngModel="{{customer.soDienThoai}}" required>
+                            </div>
+                            <div class="col-12 mb-3 form-group">
+                                <label for="street_address">Địa chỉ
+                                  <span>*</span>
+                                </label>
+                                <input formControlName="address" type="text" maxlength="50" placeholder="Nhập địa chỉ của bạn" class="form-control mb-3" id="street_address" ngModel="{{customer.diaChi}}" required>
+                            </div>
+                            <div class="col-12 mb-4 form-group">
+                                <label for="email_address">Email
+                                  <span>*</span>
+                                </label>
+                                <input formControlName="email" type="email" placeholder="Nhập Email của bạn" class="form-control" id="email_address" ngModel="{{customer.email}}" required>
+                            </div>
+                            <div class="col-12 mb-4 form-group">
+                                <label for="note">Ghi chú
+                                </label>
+                                <textarea formControlName="note" placeholder="Ghi chú" type="textarea" name="note" id="note" cols="" rows="10" ngModel="{{customer.note}}"></textarea>
+                            </div>
+                            <div class="btnSubmit">
+                                <button id="confirmPayment" type="submit" class="btn btn-success btnCheckout" *ngIf="checkoutForm.valid">Xác nhận thanh toán</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 ml-lg-auto">
+                <div class="order-details-confirmation">
+                    <div class="cart-page-heading text-center">
+                        <h5>Đơn hàng của bạn</h5>
+                    </div>
+                    <ul class="order-details-form mb-4">
+                        <div class="row">
+                            <li class="big-title">
+                                <div class="col-md-7">
+                                    <span class="title">Sản phẩm</span>
+                                </div>
+                                <div class="col-md-2">
+                                    Số lượng
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="title">Tổng</span>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="getAll" *ngFor="let pro of _productInCart">
+                            <div class="row">
+                                <li class="infoPro">
+                                    <div class="col-md-7 ele">
+                                        <span>{{pro.tenSanPham}} (size: {{pro.tenKichThuoc}})</span>
+                                    </div>
+                                    <div class="col-md-2 ele">
+                                        <span>x
+                                          <span>{{pro.soLuong}}</span>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3 ele">
+                                        <span>{{ pro.donGia * (1 - pro.chietKhau) * pro.soLuong | number:'1.0'}} đ</span>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                        <li>
+                            <span>Phí vận chuyển</span>
+                            <span>Miễn phí</span>
+                        </li>
+                        <li *ngIf="_productInCart!=null" class="sum">
+                            <span>Tổng</span>
+                            <span class="price">{{ _sumOfMoney | number:'1.0' }} đ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ****** Checkout Area End ****** -->

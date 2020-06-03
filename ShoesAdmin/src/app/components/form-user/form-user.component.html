@@ -1,0 +1,146 @@
+<div class="content-wrapper">
+    <!-- Basic form layout section start -->
+    <section id="basic-form-layouts">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="content-header">Nhân Viên</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="px-3">
+                            <form class="" method="post" [formGroup]="chitietNhanVien" (ngSubmit)="saveNhanvien()">
+                                <div class="form-body">
+                                    <h4 class="form-section">
+                                        <i class="ft-info"></i> Thông tin Nhân Viên</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput1">Mã Nhân Viên</label>
+                                                <div class="col-md-9">
+                                                    <input formControlName="idNv" type="text" id="userinput1" class="form-control border-primary" placeholder="ID" name="ID" readonly value="{{chitiet_NV.id}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput2">Giới Tính</label>
+                                                <div class="col-md-9">
+                                                    <div class="custom-control custom-radio display-inline-block ml-1">
+                                                        <input type="radio" formControlName="gioiTinh" id="customRadioInline2" value="NAM" [checked]="chitiet_NV.gioiTinh === 'NAM'" name="gioiTinh" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline2">Nam</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio display-inline-block">
+                                                        <input type="radio" formControlName="gioiTinh" id="customRadioInline3" value="NỮ" [checked]="chitiet_NV.gioiTinh === 'NỮ'" name="gioiTinh" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline3">Nữ</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control" for="userinput3">Họ & Tên</label>
+                                                <div class="col-md-9">
+                                                    <div *ngIf="chitietNhanVien.controls.hoTen.invalid && (chitietNhanVien.controls.hoTen.dirty || chitietNhanVien.controls.hoTen.touched)">
+                                                        <em *ngIf="chitietNhanVien.controls.hoTen.errors.pattern">Họ tên chưa đúng định dạng</em>
+                                                    </div>
+                                                    <input formControlName="hoTen" type="text" id="userinput3" class="form-control border-primary" placeholder="Username" name="username" value="{{chitiet_NV.tenNhanVien}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control" for="userinput4">Ngày Sinh</label>
+                                                <div class="col-md-9">
+                                                    <em *ngIf="!yearStatus">Vui lòng chọn tuổi từ 18 -> 80</em>
+                                                    <input formControlName="ngaySinh" type="date" (change)="selectDOB($event.target.value)" id="userinput4" class="form-control border-primary" placeholder="Nick Name" name="nickname" value="{{chitiet_NV.ngaySinh}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="form-section">
+                                        <i class="ft-mail"></i> Thông tin liên lạc</h4>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput5">Email</label>
+                                                <div class="col-md-9">
+                                                    <div *ngIf="chitietNhanVien.controls.email.invalid && (chitietNhanVien.controls.email.dirty || chitietNhanVien.controls.email.touched)">
+                                                        <em *ngIf="chitietNhanVien.controls.email.errors.pattern">Email chưa đúng định dạng</em>
+                                                    </div>
+                                                    <input formControlName="email" class="form-control border-primary" type="email" placeholder="email" id="userinput5" value="{{chitiet_NV.email}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput6">Địa Chỉ</label>
+                                                <div class="col-md-9">
+                                                    <input formControlName="diaChi" class="form-control border-primary" type="text" placeholder="123/ABC" id="userinput6" value="{{chitiet_NV.diaChi}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control">Số Điện Thoại</label>
+                                                <div class="col-md-9">
+                                                    <div *ngIf="chitietNhanVien.controls.soDienThoai.invalid && (chitietNhanVien.controls.soDienThoai.dirty || chitietNhanVien.controls.soDienThoai.touched)">
+                                                        <em *ngIf="chitietNhanVien.controls.soDienThoai.errors.pattern">Số điện thoại chưa đúng định dạng</em>
+                                                    </div>
+                                                    <input formControlName="soDienThoai" class="form-control border-primary" type="tel" placeholder="0123456789" id="userinput7" value="{{chitiet_NV.soDienThoai}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions center">
+                                    <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/index/nhanvien">
+                    <i class="ft-corner-up-left"></i> Quay lại
+                  </button>
+                                    <button type="button" (click)="showModal(chitiet_NV.id)" [disabled]="chitietNhanVien.invalid" class="btn btn-raised btn-primary">
+                    <i class="ft-user-check"></i> Lưu
+                  </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal-wrapper" (click)="removeModal()"></div>
+
+    <div class="modal1">
+        <div class="modal-header">
+            <label class="modal-title text-text-bold-600 title">Xác nhận</label>
+            <!-- <h3 class="modal-title">Confirm</h3> -->
+            <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">Lưu thông tin?</div>
+        <div class="modal-footer">
+            <div class="col-md-12 text-center">
+                <button type="submit" (click)="saveNhanvien()" class="btn btn-raised btn-success but1">
+          <i class=""></i> Lưu
+        </button>
+                <button type="submit" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+          <i class=""></i> Hủy
+        </button>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL -->
+</div>

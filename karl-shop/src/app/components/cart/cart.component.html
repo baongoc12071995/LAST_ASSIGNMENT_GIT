@@ -1,0 +1,142 @@
+<!-- ****** Cart Area Start ****** -->
+<div class="cart_area section_padding_100 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Kích thước</th>
+                                <th>Giá cũ</th>
+                                <th>Chiết khấu</th>
+                                <th>Giá mới</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="_productInCart!=null">
+                            <tr *ngFor="let pro of _productInCart">
+                                <td class="cart_product_img d-flex align-items-center">
+                                    <a href="#">
+                                        <img src="{{ pro.hinhSanPham }}" alt="Product">
+                                    </a>
+                                    <h6>{{ pro.tenSanPham }}</h6>
+                                </td>
+                                <td>
+                                    <span>{{ pro.tenKichThuoc }}</span>
+                                </td>
+                                <td class="price">
+                                    <span>{{ pro.donGia | number:'1.0'}} đ</span>
+                                </td>
+                                <td class="price">
+                                    <span>{{ pro.chietKhau * 100 }}%</span>
+                                </td>
+                                <td class="price">
+                                    <span>{{ pro.donGia * (1 - pro.chietKhau) | number:'1.0' }} đ</span>
+                                </td>
+                                <td class="qty">
+                                    <div class="quantity">
+                                        <span class="qty-minus" (click)="minusQuantity(pro.id,pro.tenKichThuoc,pro.soLuong)">
+                                          <i class="fa fa-minus" aria-hidden="true"></i>
+                                        </span>
+                                        <input type="number" disabled="all" [(ngModel)]="pro.soLuong" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="1">
+                                        <span class="qty-plus" (click)="plusQuantity(pro.id,pro.tenKichThuoc,pro.soLuong)">
+                                          <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <span class="quantityMax">Số lượng còn: {{pro.soLuongKho}}</span>
+                                </td>
+                                <td class="total_price">
+                                    <span>{{ pro.donGia * (1 - pro.chietKhau) * pro.soLuong | number:'1.0'}} đ</span>
+                                </td>
+                                <td class="btnRemove">
+                                    <div class="removeProduct">
+                                        <i (click)="deleteProduct(pro.id,pro.tenKichThuoc)" class="far fa-trash-alt remove"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cart-footer d-flex mt-30">
+                    <div class="back-to-shop w-50">
+                        <a class="continue" routerLink="/home/products" (click)="goShopping()">Tiếp tục mua sắm</a>
+                    </div>
+                    <div class="update-checkout w-50 text-right">
+                        <a (click)="cancelAllProducts()" class="destroy">Hủy đơn hàng</a>
+                        <!-- <a class="cart-submit" (click)="updateCart()">Cập nhật đơn hàng</a> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8">
+                <!-- push 8 -->
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="cart-total-area mt-70">
+                    <div class="cart-page-heading">
+                        <h5>Hóa đơn</h5>
+                    </div>
+
+                    <ul class="cart-total-chart">
+                        <li>
+                            <span>Tiền sản phẩm</span>
+                            <span>{{ _sumOfMoney | number:'1.0' }} đ</span>
+                        </li>
+                        <li>
+                            <span>Tiền vận chuyển</span>
+                            <span>Free</span>
+                        </li>
+                        <li>
+                            <span>
+                <strong>Tổng</strong>
+              </span>
+                            <span>
+                <strong>{{ _sumOfMoney | number:'1.0' }} đ</strong>
+              </span>
+                        </li>
+                    </ul>
+                    <a class="btn karl-checkout-btn" (click)="getAllProductInCart()">Tiến hành thanh toán</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Show login-modal after (click)="getAllProductInCart()" -->
+    <div class="modal-wrapper"></div>
+
+    <div class="modal-login">
+        <div class="modal-content">
+            <div class="row row-title">
+                <div class="col-sm-12 text-center col-title">
+                    <span>Đăng nhập</span>
+                    <i class="fas fa-times icon-trash" (click)="removeModal()"></i>
+                </div>
+            </div>
+            <div class="row modal-row">
+                <div class="col-sm-12 text-center">
+                    <a class="btn btn-primary ff" id="fbMode" (click)="signInWithFB()">Đăng nhập
+            <i class="fab fa-facebook-f icon"></i>
+          </a>
+                    <a class="btn btn-danger gg" id="ggMode" (click)="signInWithGoogle()">Đăng nhập
+            <i class="fab fa-google icon"></i>
+          </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Show login-modal after (click)="getAllProductInCart()" -->
+
+</div>

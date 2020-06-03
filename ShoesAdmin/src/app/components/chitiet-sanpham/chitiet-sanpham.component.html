@@ -1,0 +1,217 @@
+<div class="content-wrapper">
+  <!-- Basic Carousel start -->
+  <section id="basic-carousel">
+
+    <div class="row">
+      <div class="col-sm-12 mt-2">
+        <div class="content-header">Thông tin sản phẩm</div>
+      </div>
+      <div id="buttonkhohang" *ngIf="chitietSp != null">
+        <button (click)="goHangTrongKho(chitietSp.id)" type="button" class="btn btn-raised btn-raised btn-primary btnKho">
+          Kho hàng
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+              <form class="form" method="post" [formGroup]="chitietSanpham">
+                <div class="form-body">
+                  <h4 class="form-section" formControlName="idSp">
+                    <i class="ft-user"></i>
+                    Mã sản phẩm: {{ chitietSp.id }}
+                  </h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput1">TÊN SẢN PHẨM</label>
+                        <input type="text" formControlName="tenSanPham" value="{{chitietSp.tenSanPham}}" id="userinput1" class="form-control border-primary"
+                          name="name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput2">Loại giày</label>
+                        <select id="issueinput5" [compareWith]="compareLoaiGiay" (change)="getNewLG($event)" [ngModel]="loaiGiayAA.tenLoai" name="priority" class="form-control" data-toggle="tooltip" data-trigger="hover"
+                          data-placement="top" data-title="Priority" [ngModelOptions]="{standalone: true}">
+                          <option value="none">---Select---</option>
+                          <option *ngFor="let giay of listgiay" [value]="giay.tenLoai">
+                            {{giay.tenLoai}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput3">Đơn giá</label>
+                        <input type="text" formControlName="donGia" value="{{chitietSp.donGia}}" id="userinput3" class="form-control border-primary"
+                          name="username">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="userinput4">Chiết khấu (%) </label>
+                        <input type="text" formControlName="chietKhau" value="{{chitietSp.chietKhau * 100}}" id="userinput4" class="form-control border-primary"
+                          name="nickname">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="chitietSp != null">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="projectinput4">Kích thước</label>
+                        <br>
+                        <div class="box text-center" *ngFor="let size of chitietSp.hangTrongKho">
+                          <span class="box-size">{{ size.kichThuoc.tenKichThuoc }} &nbsp;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="projectinput8">Chi tiết</label>
+                        <textarea formControlName="chiTiet" id="projectinput8" rows="5" class="form-control" name="comment" value="{{chitietSp.chiTiet}}"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-actions text-center">
+                        <button type="button" class="btn btn-raised btn-raised btn-warning" routerLink="/index/sanpham">
+                          <i class="ft-corner-up-left"></i> Quay lại
+                        </button>
+                        <button type="submit" (click)="showModal()" class="btn btn-raised btn-raised btn-primary">
+                          <i class="ft-save"></i> Lưu
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6" *ngIf="chitietSp != null">
+        <div class="card">
+          <div class="card-body">
+            <div class="px-3">
+              <!-- *ngIf="chitietSp != null" -->
+              <form class="form">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    <i class="ft-info"></i> Hình ảnh</h4>
+
+                  <div class="upload">
+                    <div class="row">
+                      <div class="col-md-12" *ngIf="currentUpload">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                        </div>
+                        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Completed
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-upload">
+                        <label>
+                          <input type="file" (change)="detectFiles($event)" multiple>
+                        </label>
+                        <button class="btn btn-outline-success btnUpload" [disabled]="!selectedFiles" (click)="uploadMulti()">Upload</button>
+                        <button (click)="getListImg()">download</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <table id="table_sp" class="table table-responsive-md-md text-center" *ngIf="chitietSp != null">
+                  <thead>
+                    <tr>
+                      <th>STT</th>
+                      <th>Hình ảnh</th>
+                      <!-- <th *ngIf="role == 'ROLE_ADMIN'">Chức năng</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let image of chitietSp.hinhSanPham">
+                      <td style="vertical-align: middle">{{ image.id }}</td>
+                      <td style="vertical-align: middle">
+                        <img src="{{image.hinh}}" width="100">
+                      </td>
+                      <td style="vertical-align: middle">
+                        <!-- <a *ngIf="role == 'ROLE_ADMIN'" class="danger p-0" data-original-title="" title="Xóa" id="confirm-cancel">
+                            <i (click)="showModal()" class="ft-x font-medium-3 mr-2"></i> -->
+                          <!-- <i (click)="delSize(size.kichThuocId)" class="ft-x font-medium-3 mr-2"></i> -->
+                        <!-- </a> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Modal Save -->
+<div class="modal-wrapper" (click)="removeModal()"></div>
+
+<div class="modal1">
+    <div class="modal-header">
+        <label class="modal-title text-text-bold-600 title">Confirm</label>
+        <!-- <h3 class="modal-title">Confirm</h3> -->
+        <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">Are you sure you want to save?</div>
+        <div  class="modal-footer">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-raised btn-success but1">
+                    <i class=""></i> OK
+                </button>
+                <button type="button" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+                    <i class=""></i> Cancel
+                </button>
+            </div>
+        </div>
+</div>
+<!-- MODAL -->
+ <!-- Modal Delete -->
+ <div class="modal-wrapper" (click)="removeModal()"></div>
+
+ <div class="modal2">
+     <div class="modal-header">
+         <label class="modal-title text-text-bold-600 title">Confirm</label>
+         <!-- <h3 class="modal-title">Confirm</h3> -->
+         <button (click)="removeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+     </div>
+     <div class="modal-body">Are you sure you want to save?</div>
+         <div  class="modal-footer">
+             <div class="col-md-12 text-center">
+                 <button type="submit" (click)="saveSanpham()" class="btn btn-raised btn-success but1">
+                     <i class=""></i> OK
+                 </button>
+                 <button type="submit" (click)="removeModal()" class="btn btn-raised btn-warning but1">
+                     <i class=""></i> Cancel
+                 </button>
+             </div>
+         </div>
+ </div>
+ <!-- MODAL -->
+</div>

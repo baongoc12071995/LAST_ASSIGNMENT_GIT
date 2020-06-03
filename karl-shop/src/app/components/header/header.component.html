@@ -1,0 +1,165 @@
+<div class="catagories-side-menu2">
+    <!-- Close Icon -->
+    <div id="sideMenuClose" (click)="hideMenu()">
+        <i class="ti-close"></i>
+    </div>
+    <!--  Side Nav  -->
+    <div class="nav-side-menu">
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <li class="home-menu" (click)="getProductByCate(loai.tenLoai)" *ngFor="let loai of _loaigiayArray">
+                    <span class="icons">
+            <i class="fa fa-chevron-right"></i>
+          </span> {{loai.tenLoai}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ****** Header Area Start ****** -->
+<header class="header_area">
+
+    <!-- <div class="row login-row">
+    <div class="col-md-12 text-right">
+      <a class="btn btn-primary ff" (click)="signInWithFB()">Đăng nhập
+        <i class="fab fa-facebook-f icon"></i>
+      </a>
+      <a class="btn btn-danger gg" (click)="signInWithGoogle()">Đăng nhập
+        <i class="fab fa-google icon"></i>
+      </a>
+    </div>
+  </div> -->
+
+    <!-- Top Header Area Start -->
+    <div class="top_header_area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-end">
+                <div class="col-12 col-lg-7">
+                    <div class="top_single_area d-flex align-items-center">
+                        <!-- Logo Area -->
+                        <div class="top_logo">
+                            <a href="#">
+                                <img src="../assets/images/core-img/logo.png" alt="">
+                            </a>
+                        </div>
+                        <!-- Cart & Menu Area -->
+                        <div class="header-cart-menu d-flex align-items-center ml-auto">
+                            <!-- Cart Area -->
+                            <div class="cart">
+                                <a id="header-cart-btn" routerLink="/home/cart">
+                                    <i class="ti-bag"></i> Giỏ Hàng
+                                </a>
+                            </div>
+                            <div class="header-right-side-menu ml-15" (click)="showLeftBar()">
+                                <a id="sideMenuBtn">
+                                    <i class="ti-menu" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Header Area End -->
+    <div class="main_header_area">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 d-md-flex justify-content-between">
+                    <!-- Header Social Area -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Help Line -->
+                            <div class="help-line">
+                                <a href="tel:+346573556778">
+                                    <i class="ti-headphone-alt"></i> +84 090 3556 778</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Menu Area -->
+                            <div class="main-menu-area">
+                                <nav class="navbar navbar-expand-lg align-items-start">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                      <span class="navbar-toggler-icon">
+                                        <i class="ti-menu"></i>
+                                      </span>
+                                    </button>
+                                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                        <ul class="navbar-nav animated" id="nav">
+                                            <li class="nav-item active">
+                                                <a class="nav-link" routerLink="/home">Trang chủ</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" routerLink="/home/about">Giới thiệu</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" routerLink="/home/products">Sản phẩm</a>
+                                            </li>
+                                            <!-- <li class="nav-item">
+                                                    <a class="nav-link" routerLink="/home/account">Tài khoản</a>
+                                                  </li> -->
+                                            <li class="nav-item">
+                                                <a class="nav-link" routerLink="/home/lienhe">Liên Hệ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-avatar">
+                        <div class="col-md-8">
+                            <div class="customer">
+                                <span *ngIf="userInfo != null">
+                                  <p class="name">Hello, {{userInfo.name}}</p>
+                                </span>
+                                <div class="dropdown arrow" *ngIf="userInfo != null">
+                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <!-- <i class="fas fa-chevron-down"></i> -->
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" (click)="showProfile()">Thông tin tài khoản</a>
+                                        <a class="dropdown-item" (click)="signOut()">Đăng xuất</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span *ngIf="userInfo != null">
+                              <img class="avatar" src="{{userInfo.image}}" alt="Customer avatar">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ****** Header Area End ****** -->
+
+<!-- ****** Top Discount Area Start ****** -->
+<section class="top-discount-area d-md-flex align-items-center">
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>Miễn Phí Ship &amp; Đổi Trả</h5>
+        <a>MUA NGAY</a>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>Giảm 10% giày NB</h5>
+        <a>MUA NGAY</a>
+    </div>
+    <!-- Single Discount Area -->
+    <div class="single-discount-area">
+        <h5>Giảm 10% cho học sinh</h5>
+        <a>MUA NGAY</a>
+    </div>
+</section>
+<!-- ****** Top Discount Area End ****** -->
